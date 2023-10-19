@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2023 at 03:28 PM
+-- Generation Time: Oct 19, 2023 at 05:40 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -145,7 +145,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `type`, `revoked`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', NULL, '$2y$10$7K.g2IdqRbGsTb/LAi1YOerunHqIw5VfTv8ZX56YMkpfRIUC1cRxK', 'admin', 0, NULL, '2023-09-21 07:26:43', '2023-09-21 07:26:43');
+(1, 'Admin', 'admin@gmail.com', '2023-09-21 07:26:43', '$2y$10$7K.g2IdqRbGsTb/LAi1YOerunHqIw5VfTv8ZX56YMkpfRIUC1cRxK', 'admin', 0, NULL, '2023-09-21 07:26:43', '2023-09-21 07:26:43');
 
 --
 -- Indexes for dumped tables
