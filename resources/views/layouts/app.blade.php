@@ -22,7 +22,6 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/sass/app.scss', 'resources/js/app.js', 'resources/js/supervisors.js', 'resources/js/assignorTodos.js', 'resources/js/todos.js', 'resources/js/todoReports.js', 'resources/js/assignorTodoReports.js', 'resources/js/assigneeTodoReports.js', 'resources/js/assigneeTodos.js'])
 </head>
-gg
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
