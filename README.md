@@ -1,12 +1,12 @@
 <p align="center">
-	<img src="https://github.com/beyondscript/Todo-Manager/blob/main/public/icons/favicon.webp" width="60" height="60" margin-left="auto" margin-right="auto" alt="Logo">
+	<img src="https://github.com/beyondscript/Task-Management/blob/main/public/icons/favicon.webp" width="60" height="60" margin-left="auto" margin-right="auto" alt="Logo">
 	<br>
-	Todo Manager
+	Task Management
 </p>
 
-## About Todo Manager
+## About Task Management
 
-Todo Manager is a multi-vendor based task management web application which was designed by using HTML, CSS, JavaScript and Vue JS and developed by using PHP and Laravel framework.
+Task Management is a multi-vendor based task management web application which was designed by using HTML, CSS, JavaScript and Vue JS and developed by using PHP and Laravel framework.
 
 This website was built for learning Laravel Mult-vendor based Task management web application.
 
@@ -30,7 +30,7 @@ Generate new application key by running the command "php artisan key:generate"
 
 <strong>Step - 5:</strong>
 <br>
-Create a new database and import the todomanager.sql file
+Create a new database and import the taskmanagement.sql file
 
 <strong>Step - 6:</strong>
 <br>
