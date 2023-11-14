@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,9 +22,9 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/sass/app.scss', 'resources/js/app.js', 'resources/js/supervisors.js', 'resources/js/assignorTodos.js', 'resources/js/todos.js', 'resources/js/todoReports.js', 'resources/js/assignorTodoReports.js', 'resources/js/assigneeTodoReports.js', 'resources/js/assigneeTodos.js'])
 </head>
-<body>
+<body id="body">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div id="navbar_container" class="container">
                 @if(Request::segment(2) == 'verify')
                     <a class="navbar-brand" href="{{ route('redirectToWelcome') }}">
@@ -58,12 +58,21 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    @if(Auth::user()->type == 'admin')
+                                        <a class="dropdown-item" href="{{route('adminChangeEmail')}}">Change Email</a>
+                                        <a class="dropdown-item" href="{{route('adminChangePassword')}}">Change Password</a>
+                                    @elseif(Auth::user()->type == 'supervisor')
+                                        <a class="dropdown-item" href="{{route('supervisorChangeEmail')}}">Change Email</a>
+                                        <a class="dropdown-item" href="{{route('supervisorChangePassword')}}">Change Password</a>
+                                    @elseif(Auth::user()->type == 'stuff')
+                                        <a class="dropdown-item" href="{{route('changeEmail')}}">Change Email</a>
+                                        <a class="dropdown-item" href="{{route('changePassword')}}">Change Password</a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('customLogout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                       document.getElementById('logout-form').submit();">
+                                       {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('customLogout') }}" method="POST" class="d-none">
@@ -87,6 +96,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+
+    @yield('scripts')
 
     <script>
         @if(Session::has('message'))

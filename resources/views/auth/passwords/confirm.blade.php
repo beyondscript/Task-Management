@@ -27,6 +27,18 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" style="margin-top: 4px;" type="checkbox" name="show-password" id="show-password" onclick="showPassword()">
+
+                                    <label class="form-check-label" for="show-password">
+                                        Show Password
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -46,4 +58,18 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    function showPassword() {
+        checkBox = document.getElementById('show-password')
+        if(checkBox.checked === true){
+            document.getElementById('password').type = 'text'
+        }
+        else if(checkBox.checked === false){
+            document.getElementById('password').type = 'password'
+        }
+    }
+</script>
 @endsection

@@ -34,6 +34,12 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::middleware(['admin'])->group(function () {
         Route::get('/admin-home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('adminHome');
 
+        Route::get('/admin-change-email', [App\Http\Controllers\SettingsController::class, 'adminChangeEmail'])->name('adminChangeEmail');
+        Route::patch('/admin-update-email', [App\Http\Controllers\SettingsController::class, 'adminUpdateEmail'])->name('adminUpdateEmail');
+
+        Route::get('/admin-change-password', [App\Http\Controllers\SettingsController::class, 'adminChangePassword'])->name('adminChangePassword');
+        Route::patch('/admin-update-password', [App\Http\Controllers\SettingsController::class, 'adminUpdatePassword'])->name('adminUpdatePassword');
+
         Route::get('/add-a-supervisor', [App\Http\Controllers\AdminController::class, 'addASupervisor'])->name('addASupervisor');
         Route::post('/create-a-supervisor', [App\Http\Controllers\AdminController::class, 'createASupervisor'])->name('createASupervisor');
         Route::get('/manage-supervisors', [App\Http\Controllers\AdminController::class, 'manageSupervisors'])->name('manageSupervisors');
@@ -47,6 +53,12 @@ Route::middleware(['auth','verified'])->group(function () {
         Route::middleware(['notRevoked'])->group(function () {
             Route::get('/supervisor-home', [App\Http\Controllers\HomeController::class, 'supervisorHome'])->name('supervisorHome');
 
+            Route::get('/supervisor-change-email', [App\Http\Controllers\SettingsController::class, 'supervisorChangeEmail'])->name('supervisorChangeEmail');
+            Route::patch('/supervisor-update-email', [App\Http\Controllers\SettingsController::class, 'supervisorUpdateEmail'])->name('supervisorUpdateEmail');
+
+            Route::get('/supervisor-change-password', [App\Http\Controllers\SettingsController::class, 'supervisorChangePassword'])->name('supervisorChangePassword');
+            Route::patch('/supervisor-update-password', [App\Http\Controllers\SettingsController::class, 'supervisorUpdatePassword'])->name('supervisorUpdatePassword');
+
             Route::get('/add-a-todo', [App\Http\Controllers\SupervisorController::class, 'addATodo'])->name('addATodo');
             Route::post('/create-a-todo', [App\Http\Controllers\SupervisorController::class, 'createATodo'])->name('createATodo');
             Route::get('/manage-todos', [App\Http\Controllers\SupervisorController::class, 'manageTodos'])->name('manageTodos');
@@ -56,6 +68,12 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::middleware(['stuff'])->group(function () {
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
+        Route::get('/change-email', [App\Http\Controllers\SettingsController::class, 'changeEmail'])->name('changeEmail');
+        Route::patch('/update-email', [App\Http\Controllers\SettingsController::class, 'updateEmail'])->name('updateEmail');
+
+        Route::get('/change-password', [App\Http\Controllers\SettingsController::class, 'changePassword'])->name('changePassword');
+        Route::patch('/update-password', [App\Http\Controllers\SettingsController::class, 'updatePassword'])->name('updatePassword');
+
         Route::get('/assigned-todos', [App\Http\Controllers\StuffController::class, 'assignedTodos'])->name('assignedTodos');
     });
 });
@@ -63,3 +81,7 @@ Route::middleware(['auth','verified'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [App\Http\Controllers\LogoutController::class, 'logout'])->name('customLogout');
 });
+
+Route::get('/{any}', function () {
+    return view('vuePages');
+})->where('any','.*');

@@ -28,6 +28,8 @@ class AdminController extends Controller
         $supervisor->password = Hash::make($request->password);
         $supervisor->save();
 
+        $supervisor->sendEmailVerificationNotification();
+
         $notification = array(
             'message' => 'Supervisor successfully added',
             'alert-type' => 'info'
