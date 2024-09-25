@@ -32,7 +32,7 @@ class Handler extends ExceptionHandler
             if ($e->getPrevious() instanceof \Illuminate\Session\TokenMismatchException) {
                 $notification = array(
                     'message' => 'Something went wrong',
-                    'alert-type' => 'info'
+                    'alert-type' => 'error'
                 );
                 return redirect()->back()->with($notification);
             }
@@ -42,7 +42,7 @@ class Handler extends ExceptionHandler
             if(request()->segment(1) === 'verify-email'){
                 $notification = array(
                     'message' => 'Your request is not valid',
-                    'alert-type' => 'info'
+                    'alert-type' => 'error'
                 );
                 return redirect()->route('verification.notice')->with($notification);
             }

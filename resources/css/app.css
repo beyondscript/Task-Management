@@ -182,26 +182,24 @@ textarea{
 #toast-container .toast.toast-error,
 #toast-container .toast.toast-info,
 #toast-container .toast.toast-warning{
-	color: white;
     background-image: none !important;
-    box-shadow: none;
     padding: 15px 15px 15px 7px !important;
 }
 
 #toast-container .toast.toast-success{
-	background-color: green;
+	background-color: #51A351;
 }
 
 #toast-container .toast.toast-error{
-	background-color: red;
+	background-color: #BD362F;
 }
 
 #toast-container .toast.toast-info{
-	background-color: blue;
+	background-color: #BD362F;
 }
 
 #toast-container .toast.toast-warning{
-	background-color: orange;
+	background-color: #F89406;
 }
 
 .custom-select.custom-select-sm.form-control.form-control-sm{
@@ -267,6 +265,10 @@ textarea{
 	.menu_items{
 		font-size: 11px;
 	}
+
+	#toast-container > .toast {
+        width: 238px;
+    }
 }
 
 @media only screen and (max-width: 296px){
