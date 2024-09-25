@@ -1,0 +1,276 @@
+html,
+body{
+	height: 100%;
+}
+
+input,
+button,
+a,
+select,
+textarea{
+	box-shadow: none !important;
+}
+
+.logo{
+	width: 20px;
+	height: 20px;
+	margin-top: -5px;
+}
+
+.header{
+	background-color: red;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.header_head{
+	color: #3193e8;
+	padding-bottom: 5px;
+}
+
+.header_paragraph{
+	font-size: 16px;
+	color: #ffffff;
+}
+
+.header_head, .header_paragraph{
+	margin: 0;
+}
+
+#app{
+	min-height: calc(100vh - 185px);
+}
+
+.card-header{
+	text-align: center;
+    color: #3193e8 !important;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.link{
+	display: flex;
+	width: 165px;
+	height: 30px;
+	border: 1px solid;
+	border-radius: 5px;
+	text-decoration: none;
+	color: red;
+	justify-content: center;
+	align-items: center;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.link:hover{
+	text-decoration: none;
+	color: green;
+}
+
+.dropdown-item{
+	width: 96% !important;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+.dropdown-item:hover{
+	background-color: #F0F2F5 !important;
+	border-radius: 5px;
+}
+
+.dropdown-item:focus {     
+    color: black !important;
+}
+
+.btn.btn-link{
+	text-decoration: none;
+	color: #0D6EFD !important;
+	border: 1px solid #0D6EFD !important;
+	border-radius: 5px;
+}
+
+.btn.btn-link:hover{
+	color: red !important;
+	border: 1px solid red !important;
+}
+
+.btn.btn-link.p-0.m-0.align-baseline{
+	color: #0D6EFD !important;
+	border: none !important;
+}
+
+.btn.btn-link.p-0.m-0.align-baseline:hover{
+	color: red !important;
+}
+
+.password_confirm_header{
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.menu {
+  	list-style-type: none;
+  	text-align: center;
+  	padding: 0;
+  	margin: 0;
+}
+
+.menu_items{
+	display: inline-block;
+}
+
+.menu_links{
+	text-decoration: none;
+	color: #0D6EFD;
+	border: 1px solid #0D6EFD;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.menu_links:hover{
+	text-decoration: none;
+	color: red;
+	border: 1px solid red;
+}
+
+.dropdown_menu{
+	display: none;
+    position: absolute;
+    text-align: left;
+    background-color: #ECEEF0;
+	border-radius: 5px;
+	padding: 5px;
+	padding-right: 10px;
+	border: 1px solid #ccced0;
+    top: 128px;
+    z-index: 1;
+}
+
+.menu_items:hover .dropdown_menu{
+    display: block;
+}
+
+.dropdown_menu_items{
+    display: block;
+}
+
+.dropdown_menu_links{
+	text-decoration: none;
+	color: #0D6EFD;
+}
+
+.dropdown_menu_links:hover{
+	text-decoration: none;
+	color: red;
+}
+
+.add_a_supervisor .header,
+.manage_supervisors .header{
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.footer{
+	background-color: black;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#toast-container .toast.toast-success,
+#toast-container .toast.toast-error,
+#toast-container .toast.toast-info,
+#toast-container .toast.toast-warning{
+	color: white;
+    background-image: none !important;
+    box-shadow: none;
+    padding: 15px 15px 15px 7px !important;
+}
+
+#toast-container .toast.toast-success{
+	background-color: green;
+}
+
+#toast-container .toast.toast-error{
+	background-color: red;
+}
+
+#toast-container .toast.toast-info{
+	background-color: blue;
+}
+
+#toast-container .toast.toast-warning{
+	background-color: orange;
+}
+
+.custom-select.custom-select-sm.form-control.form-control-sm{
+	width: 50px;
+}
+
+.actions_button_info{
+	background-color: white;
+	color: blue;
+	border: 1px solid blue;
+	border-radius: 5px;
+}
+
+.actions_button_info:hover{
+	background-color: blue;
+	color: white;
+}
+
+.actions_button_danger{
+	background-color: white;
+	color: red;
+	border: 1px solid red;
+	border-radius: 5px;
+}
+
+.actions_button_danger:hover{
+	background-color: red;
+	color: white;
+}
+
+.revoked_text{
+	text-align: center;
+	margin-bottom: 0;
+}
+
+#description{
+  resize: none;
+}
+
+.multiple_buttons{
+	display: flex;
+}
+
+.with_another_button{
+	margin-right: 5px;
+}
+
+@media only screen and (max-width: 576px) and (min-width: 576px){
+	.navbar.navbar-expand-md.navbar-light.bg-white.shadow-sm #navbar_container{
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+}
+
+@media only screen and (max-width: 576px){
+	#navbar_container{
+		padding-left: 10px !important;
+		padding-right: 10px !important;
+	}
+}
+
+@media only screen and (max-width: 320px){
+	.menu_items{
+		font-size: 11px;
+	}
+}
+
+@media only screen and (max-width: 296px){
+	#reset_password_button{
+		margin-top: 5px;
+	}
+}
