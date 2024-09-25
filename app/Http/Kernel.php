@@ -69,5 +69,6 @@ class Kernel extends HttpKernel
         'stuff' => \App\Http\Middleware\CheckIfStuff::class,
         'revoked' => \App\Http\Middleware\CheckIfRevoked::class,
         'notRevoked' => \App\Http\Middleware\CheckIfNotRevoked::class,
+        'www' => \App\Http\Middleware\RedirectNonWww::class,
     ];
 }

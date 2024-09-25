@@ -13,37 +13,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect(route('login'));
-})->name('welcome');
+Route::middleware(['www'])->group(function () {
+    Route::get('/', function () {
+        return redirect(route('login'));
+    })->name('welcome');
 
-Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+    Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
 
-Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
+    Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
 
-Route::get('verify-email', [App\Http\Controllers\Auth\VerificationController::class, 'show'])->name('verification.notice');
-Route::get('verify-email/{id}/{hash}', [App\Http\Controllers\Auth\VerificationController::class, 'verify'])->name('verification.verify');
-Route::post('resend-verify-email', [App\Http\Controllers\Auth\VerificationController::class, 'resend'])->name('verification.resend');
+    Route::get('verify-email', [App\Http\Controllers\Auth\VerificationController::class, 'show'])->name('verification.notice');
+    Route::get('verify-email/{id}/{hash}', [App\Http\Controllers\Auth\VerificationController::class, 'verify'])->name('verification.verify');
+    Route::post('resend-verify-email', [App\Http\Controllers\Auth\VerificationController::class, 'resend'])->name('verification.resend');
 
-Route::get('/redirect-to-welcome', function() {
-    Cookie::queue(Cookie::forget(Str::slug(env('APP_NAME'), '_').'_session'));
-    if(Cookie::has('remember_me_'.Str::slug(env('APP_NAME')))){
-        Cookie::queue(Cookie::forget('remember_me_'.Str::slug(env('APP_NAME'))));
-    }
-    return redirect(route('welcome'));
-})->name('redirectToWelcome');
+    Route::get('/redirect-to-welcome', function() {
+        Cookie::queue(Cookie::forget(Str::slug(env('APP_NAME'), '_').'_session'));
+        if(Cookie::has('remember_me_'.Str::slug(env('APP_NAME')))){
+            Cookie::queue(Cookie::forget('remember_me_'.Str::slug(env('APP_NAME'))));
+        }
+        return redirect(route('welcome'));
+    })->name('redirectToWelcome');
 
-Route::get('reset-password', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('reset-password', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::get('reset-password/{token}', [App\Http\Controllers\Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-Route::post('reset-password-with-token', [App\Http\Controllers\Auth\ResetPasswordController::class, 'reset'])->name('password.update');
+    Route::get('reset-password', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('reset-password', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('reset-password/{token}', [App\Http\Controllers\Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('reset-password-with-token', [App\Http\Controllers\Auth\ResetPasswordController::class, 'reset'])->name('password.update');
 
-Route::get('confirm-password', [App\Http\Controllers\Auth\ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm');
-Route::post('confirm-password', [App\Http\Controllers\Auth\ConfirmPasswordController::class, 'confirm']);
+    Route::get('confirm-password', [App\Http\Controllers\Auth\ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm');
+    Route::post('confirm-password', [App\Http\Controllers\Auth\ConfirmPasswordController::class, 'confirm']);
 
-Auth::routes(['verify' => false, 'reset' => false, 'confirm' => false, 'logout' => false]);
+    Auth::routes(['verify' => false, 'reset' => false, 'confirm' => false, 'logout' => false]);
+});
 
-Route::middleware(['auth','verified'])->group(function () {
+Route::middleware(['www', 'auth','verified'])->group(function () {
     Route::middleware(['admin'])->group(function () {
         Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('adminHome');
 
@@ -91,10 +93,12 @@ Route::middleware(['auth','verified'])->group(function () {
     });
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['www', 'auth'])->group(function () {
     Route::post('/logout', [App\Http\Controllers\LogoutController::class, 'logout'])->name('logout');
 });
 
-Route::get('/{any}', function () {
-    return view('vuePages');
-})->where('any','.*');
+Route::middleware(['www'])->group(function () {
+    Route::get('/{any}', function () {
+        return view('vuePages');
+    })->where('any','.*');
+});
