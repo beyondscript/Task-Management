@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
+                        <div style="text-align: center; margin-bottom: 12px;" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
