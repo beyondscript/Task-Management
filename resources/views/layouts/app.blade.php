@@ -36,7 +36,7 @@
             </h2>
             <p class="header_paragraph">Easily manage all your tasks from one place</p>
         </div>
-        <main class="py-4" style="min-height: calc(100vh - 171px); display: flex; align-items: center; justify-content: center; padding-top: 15px !important; padding-bottom: 15px !important;">
+        <main class="py-4" style="min-height: calc(100vh - 170px); display: flex; align-items: center; justify-content: center; padding-top: 15px !important; padding-bottom: 15px !important;">
             @yield('content')
         </main>
         <div class="footer">

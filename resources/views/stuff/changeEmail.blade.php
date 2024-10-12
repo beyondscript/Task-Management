@@ -10,7 +10,7 @@
 
                     <ul class="menu" style="margin-top: 5px; margin-bottom: 5px;">
                         <li class="menu_items" style="font-size: initial; font-weight: normal;"><a class="menu_links" href="/stuff-menu" onclick="event.preventDefault()">{{Auth::user()->name}}</a>
-                            <ul class="dropdown_menu" style="top: 74px;">
+                            <ul class="dropdown_menu" style="top: 75px;">
                                 <li class="dropdown_menu_items" style="height: 27px;"><a class="dropdown_menu_links" href="{{route('changeEmail')}}">Change Email</a></li>
                                 <li class="dropdown_menu_items"><a class="dropdown_menu_links" href="{{route('changePassword')}}">Change Password</a></li>
                                 <li class="dropdown_menu_items">

@@ -38,10 +38,6 @@ textarea{
 	margin: 0;
 }
 
-#app{
-	min-height: calc(100vh - 185px);
-}
-
 .card-header{
 	text-align: center;
     color: #3193e8 !important;
@@ -143,7 +139,7 @@ textarea{
 	padding: 5px;
 	padding-right: 10px;
 	border: 1px solid #ccced0;
-    top: 128px;
+    top: 129px;
     z-index: 1;
 }
 
