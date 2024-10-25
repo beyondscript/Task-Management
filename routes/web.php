@@ -18,8 +18,6 @@ Route::middleware(['www'])->group(function () {
         return redirect(route('login'));
     })->name('welcome');
 
-    Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
-
     Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
 
     Route::get('verify-email', [App\Http\Controllers\Auth\VerificationController::class, 'show'])->name('verification.notice');
