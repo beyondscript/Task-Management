@@ -30,7 +30,7 @@ Generate new application key by running the command "php artisan key:generate"
 
 <strong>Step - 5:</strong>
 <br>
-Create a new database and import the taskmanagemen.sql file
+Create a new database and import the taskmanagement.sql file
 
 <strong>Step - 6:</strong>
 <br>
