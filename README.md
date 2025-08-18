@@ -4,7 +4,7 @@
 	Task Management
 </p>
 
-## About Task Managemen
+## About Task Management
 
 Task Management is a multi-vendor based task management web application which was designed by using HTML, CSS, JavaScript and Vue JS and developed by using PHP and Laravel framework.
 
