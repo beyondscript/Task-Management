@@ -36,13 +36,8 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Send Link') }}
                                 </button>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0" style="margin-top: 10px;">
-                            <div class="col-md-8 offset-md-4">
-                                Already have an account?
-                                <a href="{{ route('login') }}" class="btn btn-link">Login</a>
+                                
+                                <a href="{{ route('welcome') }}" class="btn btn-danger">Cancel</a>
                             </div>
                         </div>
                     </form>
