@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['www'])->group(function () {
+Route::group(function () {
     Route::get('/', function () {
         return redirect(route('login'));
     })->name('welcome');
@@ -43,7 +43,7 @@ Route::middleware(['www'])->group(function () {
     Auth::routes(['verify' => false, 'reset' => false, 'confirm' => false, 'logout' => false]);
 });
 
-Route::middleware(['www', 'auth','verified'])->group(function () {
+Route::middleware(['auth','verified'])->group(function () {
     Route::middleware(['admin'])->group(function () {
         Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('adminHome');
 
@@ -91,11 +91,11 @@ Route::middleware(['www', 'auth','verified'])->group(function () {
     });
 });
 
-Route::middleware(['www', 'auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [App\Http\Controllers\LogoutController::class, 'logout'])->name('logout');
 });
 
-Route::middleware(['www'])->group(function () {
+Route::group(function () {
     Route::get('/{any}', function () {
         return view('vuePages');
     })->where('any','.*');
