@@ -95,7 +95,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [App\Http\Controllers\LogoutController::class, 'logout'])->name('logout');
 });
 
-Route::group(function () {
+Route::group([], function () {
     Route::get('/{any}', function () {
         return view('vuePages');
     })->where('any','.*');
