@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(function () {
+Route::group([], function () {
     Route::get('/', function () {
         return redirect(route('login'));
     })->name('welcome');
