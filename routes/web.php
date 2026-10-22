@@ -37,9 +37,6 @@ Route::group([], function () {
     Route::get('reset-password/{token}', [App\Http\Controllers\Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('reset-password-with-token', [App\Http\Controllers\Auth\ResetPasswordController::class, 'reset'])->name('password.update');
 
-    Route::get('confirm-password', [App\Http\Controllers\Auth\ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm');
-    Route::post('confirm-password', [App\Http\Controllers\Auth\ConfirmPasswordController::class, 'confirm']);
-
     Auth::routes(['verify' => false, 'reset' => false, 'confirm' => false, 'logout' => false]);
 });
 
@@ -48,10 +45,10 @@ Route::middleware(['auth','verified'])->group(function () {
         Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('adminHome');
 
         Route::get('/admin/change-email', [App\Http\Controllers\SettingsController::class, 'adminChangeEmail'])->name('adminChangeEmail');
-        Route::patch('/admin/update-email', [App\Http\Controllers\SettingsController::class, 'adminUpdateEmail'])->name('adminUpdateEmail');
+        Route::patch('/admin/update-email', [App\Http\Controllers\SettingsController::class, 'adminUpdateEmail'])->middleware('throttle:6,1')->name('adminUpdateEmail');
 
         Route::get('/admin/change-password', [App\Http\Controllers\SettingsController::class, 'adminChangePassword'])->name('adminChangePassword');
-        Route::patch('/admin/update-password', [App\Http\Controllers\SettingsController::class, 'adminUpdatePassword'])->name('adminUpdatePassword');
+        Route::patch('/admin/update-password', [App\Http\Controllers\SettingsController::class, 'adminUpdatePassword'])->middleware('throttle:6,1')->name('adminUpdatePassword');
 
         Route::get('/admin/add-a-supervisor', [App\Http\Controllers\AdminController::class, 'addASupervisor'])->name('addASupervisor');
         Route::post('/admin/create-a-supervisor', [App\Http\Controllers\AdminController::class, 'createASupervisor'])->name('createASupervisor');
@@ -67,10 +64,10 @@ Route::middleware(['auth','verified'])->group(function () {
             Route::get('/supervisor/home', [App\Http\Controllers\HomeController::class, 'supervisorHome'])->name('supervisorHome');
 
             Route::get('/supervisor/change-email', [App\Http\Controllers\SettingsController::class, 'supervisorChangeEmail'])->name('supervisorChangeEmail');
-            Route::patch('/supervisor/update-email', [App\Http\Controllers\SettingsController::class, 'supervisorUpdateEmail'])->name('supervisorUpdateEmail');
+            Route::patch('/supervisor/update-email', [App\Http\Controllers\SettingsController::class, 'supervisorUpdateEmail'])->middleware('throttle:6,1')->name('supervisorUpdateEmail');
 
             Route::get('/supervisor/change-password', [App\Http\Controllers\SettingsController::class, 'supervisorChangePassword'])->name('supervisorChangePassword');
-            Route::patch('/supervisor/update-password', [App\Http\Controllers\SettingsController::class, 'supervisorUpdatePassword'])->name('supervisorUpdatePassword');
+            Route::patch('/supervisor/update-password', [App\Http\Controllers\SettingsController::class, 'supervisorUpdatePassword'])->middleware('throttle:6,1')->name('supervisorUpdatePassword');
 
             Route::get('/supervisor/add-a-task', [App\Http\Controllers\SupervisorController::class, 'addATodo'])->name('addATodo');
             Route::post('/supervisor/create-a-task', [App\Http\Controllers\SupervisorController::class, 'createATodo'])->name('createATodo');
@@ -82,10 +79,10 @@ Route::middleware(['auth','verified'])->group(function () {
         Route::get('/stuff/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
         Route::get('/stuff/change-email', [App\Http\Controllers\SettingsController::class, 'changeEmail'])->name('changeEmail');
-        Route::patch('/stuff/update-email', [App\Http\Controllers\SettingsController::class, 'updateEmail'])->name('updateEmail');
+        Route::patch('/stuff/update-email', [App\Http\Controllers\SettingsController::class, 'updateEmail'])->middleware('throttle:6,1')->name('updateEmail');
 
         Route::get('/stuff/change-password', [App\Http\Controllers\SettingsController::class, 'changePassword'])->name('changePassword');
-        Route::patch('/stuff/update-password', [App\Http\Controllers\SettingsController::class, 'updatePassword'])->name('updatePassword');
+        Route::patch('/stuff/update-password', [App\Http\Controllers\SettingsController::class, 'updatePassword'])->middleware('throttle:6,1')->name('updatePassword');
 
         Route::get('/stuff/assigned-tasks', [App\Http\Controllers\StuffController::class, 'assignedTodos'])->name('assignedTodos');
     });
