@@ -1,5 +1,12 @@
 <template>
-	<table id="table" class="table table-striped table-bordered" width="100%">
+	<div class="data_table_frame" :aria-busy="loading">
+        <LoadingIndicator v-if="loading" label="Loading table…" />
+        <div v-else-if="loadError" class="content_loader" role="alert">
+            <span>The table could not be loaded.</span>
+            <button type="button" class="btn btn-link" @click="reload">Try again</button>
+        </div>
+        <div :class="{ content_pending: loading || loadError }">
+    <table ref="table" id="table" class="table table-striped table-bordered" width="100%">
         <thead>
             <tr>
                 <th>Name</th>
@@ -18,41 +25,34 @@
             </tr>
         </tbody>
     </table>
+        </div>
+    </div>
 </template>
 <script>
-	import { onMounted, onBeforeUnmount } from 'vue';
-	import supervisors from "../../js/composables/supervisors";
-	import $ from 'jquery';
-	import { useStore } from 'vuex';
-	export default{
-		setup(){
-			const { allSupervisors, revokeSupervisor, approveSupervisor } = supervisors()
-			const store = useStore()
-			onMounted(
-				async() => {
-					await allSupervisors()
-					$('#table').DataTable({
-						scrollX: true
-					})
-				}
-			)
-			const revoke = async(id) => {
-				await revokeSupervisor(id)
-				await allSupervisors()
-			}
-			const approve = async(id) => {
-				await approveSupervisor(id)
-				await allSupervisors()
-			}
-			onBeforeUnmount(
-				async() => {
-					store.dispatch('removeSupervisors')
-				}
-			)
-			return{
-				revoke,
-				approve
-			}
-		}
-	}
+import { onBeforeUnmount } from 'vue'
+import supervisors from '../composables/supervisors'
+import useDataTable from '../composables/dataTable'
+import { useStore } from 'vuex'
+import LoadingIndicator from './LoadingIndicator.vue'
+
+export default {
+    components: { LoadingIndicator },
+    setup() {
+        const { allSupervisors, revokeSupervisor, approveSupervisor } = supervisors()
+        const store = useStore()
+        const { table, loading, loadError, reload } = useDataTable(allSupervisors)
+
+        const revoke = async (id) => {
+            await revokeSupervisor(id)
+            await reload()
+        }
+        const approve = async (id) => {
+            await approveSupervisor(id)
+            await reload()
+        }
+        onBeforeUnmount(() => store.dispatch('removeSupervisors'))
+
+        return { table, loading, loadError, reload, revoke, approve }
+    }
+}
 </script>

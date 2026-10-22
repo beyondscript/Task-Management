@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
+@section('page_design', 'modern_page auth_page')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        @include('layouts.authVisual')
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Reset Password') }}</div>

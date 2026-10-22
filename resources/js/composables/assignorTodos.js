@@ -4,9 +4,9 @@ export default function assignorTodos(){
 	const allTodos = async() => {
 		try{
 			let response = await axios.get('/api/assignor-todos')
-			store.dispatch('setAssignorTodos', response.data.todos)
+			await store.dispatch('setAssignorTodos', response.data.todos)
 		}
-		catch(error){}
+		catch(error){ throw error }
 	}
 	const markTodoAsCompleted = async(id) => {
 		const formData = new FormData()

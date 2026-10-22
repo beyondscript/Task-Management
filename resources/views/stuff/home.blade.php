@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
+@section('page_design', 'modern_page workspace_page')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    {{ __('Stuff') }}
+                    {{ __('Staff') }}
 
                     <ul class="menu" style="margin-top: 5px; margin-bottom: 5px;">
                         <li class="menu_items" style="font-size: initial; font-weight: normal;"><a class="menu_links" href="/stuff-menu" onclick="event.preventDefault()">{{Auth::user()->name}}</a>
@@ -43,7 +45,9 @@
                     <div class="manage_supervisors">
                         <h4 class="header">Task Reports</h4>
                         <div id="assigneeTodoReports">
-                            <assigneetodoreports />
+                            <assigneetodoreports>
+                                @include('layouts.loading', ['label' => 'Loading reports…'])
+                            </assigneetodoreports>
                         </div>
                     </div>
                 </div>

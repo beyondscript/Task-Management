@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page_design', 'modern_page workspace_page')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -47,8 +49,10 @@
                     
                     <div class="manage_supervisors">
                         <h4 class="header">Manage Tasks</h4>
-                        <div id="assignorTodos">
-                            <assignorTodos />
+                        <div id="assignorTodos" class="data_table_frame">
+                            <assignorTodos>
+                                @include('layouts.loading', ['label' => 'Loading table…'])
+                            </assignorTodos>
                         </div>
                     </div>
                 </div>

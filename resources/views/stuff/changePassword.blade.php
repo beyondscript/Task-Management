@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
+@section('page_design', 'modern_page workspace_page form_page')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    {{ __('Stuff') }}
+                    {{ __('Staff') }}
 
                     <ul class="menu" style="margin-top: 5px; margin-bottom: 5px;">
                         <li class="menu_items" style="font-size: initial; font-weight: normal;"><a class="menu_links" href="/stuff-menu" onclick="event.preventDefault()">{{Auth::user()->name}}</a>
@@ -86,9 +88,9 @@
                             <div class="row mb-3">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="form-check">
-                                        <input class="form-check-input" style="margin-top: 4px;" type="checkbox" name="show-password" id="show-password" onclick="showPassword()">
+                                        <input class="form-check-input" type="checkbox" name="show-password" id="show-password" onclick="showPassword()">
 
-                                        <label class="form-check-label" for="show-password">
+                                        <label class="form-check-label" for="show-password" style="margin-top: 2px;">
                                             Show Password
                                         </label>
                                     </div>

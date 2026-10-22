@@ -4,9 +4,9 @@ export default function todos(){
 	const allTodos = async() => {
 		try{
 			let response = await axios.get('/api/all-todos')
-			store.dispatch('setTodos', response.data.todos)
+			await store.dispatch('setTodos', response.data.todos)
 		}
-		catch(error){}
+		catch(error){ throw error }
 	}
 	const destroyTodo = async(id) => {
 		const formData = new FormData()

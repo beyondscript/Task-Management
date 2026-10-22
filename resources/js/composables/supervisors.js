@@ -4,9 +4,9 @@ export default function supervisors(){
 	const allSupervisors = async() => {
 		try{
 			let response = await axios.get('/api/all-supervisors')
-			store.dispatch('setSupervisors', response.data.supervisors)
+			await store.dispatch('setSupervisors', response.data.supervisors)
 		}
-		catch(error){}
+		catch(error){ throw error }
 	}
 	const revokeSupervisor = async(id) => {
 		const formData = new FormData()

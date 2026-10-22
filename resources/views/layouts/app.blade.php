@@ -21,26 +21,24 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/sass/app.scss', 'resources/js/app.js', 'resources/js/supervisors.js', 'resources/js/assignorTodos.js', 'resources/js/todos.js', 'resources/js/todoReports.js', 'resources/js/assignorTodoReports.js', 'resources/js/assigneeTodoReports.js', 'resources/js/assigneeTodos.js'])
 </head>
-<body id="body">
+<body id="body" class="@yield('page_design')">
     <div id="app">
-        <div class="header">
+        <div class="header" style="justify-content: center; align-items: center;">
             <h2 class="header_head">
                 @if(Request::segment(1) == 'verify-email')
                     <a class="navbar-brand" href="{{ route('redirectToWelcome') }}">
                 @else
                     <a class="navbar-brand" href="{{ url('/') }}">
                 @endif
-                    <img class="logo" src="{{asset('icons/logo.webp')}}">
+                    <img class="logo" src="{{asset('icons/logo.webp')}}" style="height: 30px; width: 30px; background: transparent; border: none; border-radius: 0; padding: 0;">
                     {{ config('app.name') }}
                 </a>
             </h2>
-            <p class="header_paragraph">Easily manage all your tasks from one place</p>
         </div>
         <main class="py-4" style="min-height: calc(100vh - 170px); display: flex; align-items: center; justify-content: center; padding-top: 15px !important; padding-bottom: 15px !important;">
             @yield('content')
         </main>
-        <div class="footer">
-            <h2 class="header_head">Easily manage all your tasks from one place</h2>
+        <div class="footer" style="justify-content: center; align-items: center; border-top-color: #cbc5dc;">
             <p class="header_paragraph">&copy;{{ now()->year }} all rights reserved | {{config('app.name')}}</p>
         </div>
     </div>

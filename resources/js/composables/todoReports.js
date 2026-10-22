@@ -4,9 +4,9 @@ export default function todoReports(){
 	const getTodoReports = async() => {
 		try{
 			let response = await axios.get('/api/get-todo-reports')
-			store.dispatch('setTodoReports', response.data.todoReports)
+			await store.dispatch('setTodoReports', response.data.todoReports)
 		}
-		catch(error){}
+		catch(error){ throw error }
 	}
 	return{
 		getTodoReports

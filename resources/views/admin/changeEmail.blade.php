@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page_design', 'modern_page workspace_page form_page')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

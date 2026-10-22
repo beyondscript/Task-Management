@@ -4,9 +4,9 @@ export default function assigneeTodoReports(){
 	const getAssigneeTodoReports = async() => {
 		try{
 			let response = await axios.get('/api/get-assignee-todo-reports')
-			store.dispatch('setAssigneeTodoReports', response.data.assigneeTodoReports)
+			await store.dispatch('setAssigneeTodoReports', response.data.assigneeTodoReports)
 		}
-		catch(error){}
+		catch(error){ throw error }
 	}
 	return{
 		getAssigneeTodoReports
