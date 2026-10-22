@@ -13,8 +13,8 @@
                     <ul class="menu" style="margin-top: 5px; margin-bottom: 5px;">
                         <li class="menu_items" style="font-size: initial; font-weight: normal;"><a class="menu_links" href="/stuff-menu" onclick="event.preventDefault()">{{Auth::user()->name}}</a>
                             <ul class="dropdown_menu" style="top: 75px;">
-                                <li class="dropdown_menu_items" style="height: 27px;"><a class="dropdown_menu_links" href="{{route('changeEmail')}}">Change Email</a></li>
-                                <li class="dropdown_menu_items"><a class="dropdown_menu_links" href="{{route('changePassword')}}">Change Password</a></li>
+                                <li @class(['dropdown_menu_items', 'active' => request()->routeIs('changeEmail')]) style="height: 27px;"><a class="dropdown_menu_links" href="{{route('changeEmail')}}" @if(request()->routeIs('changeEmail')) aria-current="page" @endif>Change Email</a></li>
+                                <li @class(['dropdown_menu_items', 'active' => request()->routeIs('changePassword')])><a class="dropdown_menu_links" href="{{route('changePassword')}}" @if(request()->routeIs('changePassword')) aria-current="page" @endif>Change Password</a></li>
                                 <li class="dropdown_menu_items">
                                     <button class="dropdown_menu_links" style="border: unset; padding: 0;" type="button" onclick="document.getElementById('logout-form').submit();">
                                         Logout
@@ -36,8 +36,8 @@
                     @endif
 
                     <ul class="menu">
-                        <li class="menu_items"><a class="menu_links" href="{{route('home')}}">Home</a></li>
-                        <li class="menu_items"><a class="menu_links" href="{{route('assignedTodos')}}">Assigned Tasks</a></li>
+                        <li @class(['menu_items', 'active' => request()->routeIs('home')])><a class="menu_links" href="{{route('home')}}" @if(request()->routeIs('home')) aria-current="page" @endif>Home</a></li>
+                        <li @class(['menu_items', 'active' => request()->routeIs('assignedTodos')])><a class="menu_links" href="{{route('assignedTodos')}}" @if(request()->routeIs('assignedTodos')) aria-current="page" @endif>Assigned Tasks</a></li>
                     </ul>
 
                     <hr>
@@ -80,9 +80,9 @@
                             <div class="row mb-3">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="form-check">
-                                        <input class="form-check-input" style="margin-top: 4px;" type="checkbox" name="show-password" id="show-password" onclick="showPassword()">
+                                        <input class="form-check-input" type="checkbox" name="show-password" id="show-password" onclick="showPassword()">
 
-                                        <label class="form-check-label" for="show-password">
+                                        <label class="form-check-label" for="show-password" style="margin-top: 2px;">
                                             Show Password
                                         </label>
                                     </div>

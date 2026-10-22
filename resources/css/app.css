@@ -151,6 +151,10 @@ textarea{
     display: block;
 }
 
+.dropdown_menu_items + .dropdown_menu_items{
+	margin-top: 4px;
+}
+
 .dropdown_menu_links{
 	text-decoration: none;
 	color: #0D6EFD;
@@ -525,6 +529,12 @@ textarea{
 	border-radius: 50%;
 }
 
+.modern_page .card-body > .menu > .menu_items.active > .menu_links{
+	background-color: #e9e1fb;
+	border-color: #cbc5dc;
+	color: var(--page_primary);
+}
+
 .modern_page .dropdown_menu{
 	top: calc(100% + 10px) !important;
 	left: 0;
@@ -574,7 +584,8 @@ textarea{
 }
 
 .modern_page .dropdown_menu_links:hover,
-.modern_page .dropdown_menu_links:focus{
+.modern_page .dropdown_menu_links:focus,
+.modern_page .dropdown_menu_items.active > .dropdown_menu_links{
 	background-color: #f0ebff;
 	color: var(--page_primary);
 }
